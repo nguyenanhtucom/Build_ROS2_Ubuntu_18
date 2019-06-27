@@ -51,3 +51,24 @@ sudo apt install -q -y rti-connext-dds-5.3.1
 #set the NDDSHOME environment variable
  
 cd /opt/rti.com/rti_connext_dds-5.3.1/resource/scripts && source ./rtisetenv_x64Linux3gcc5.4.0.bash; cd -
+
+### Build the code in the workspace
+
+cd ~/ros2_ws/
+
+colcon build --symlink-install
+
+### Test
+
+#In one terminal, source the setup file and then run a talker:
+
+. ~/ros2_ws/install/local_setup.bash
+
+ros2 run demo_nodes_cpp talker
+
+#In another terminal source the setup file and then run a listener:
+
+. ~/ros2_ws/install/local_setup.bash
+
+ros2 run demo_nodes_py listener
+
